@@ -1,4 +1,4 @@
-public interface Fila_IF {
+public interface Fila_IF<T> {
     
     public boolean isEmpty();
     public int size();

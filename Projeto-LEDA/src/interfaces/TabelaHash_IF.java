@@ -1,4 +1,4 @@
-public interface TabelaHash_IF {
+public interface TabelaHash_IF<T> {
     
     public boolean isEmpty();
     public int size();

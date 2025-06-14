@@ -17,10 +17,10 @@ import Ordenacoes.OrdenacaoPorMesCrescente;
 public class Main {
     public static void main(String[] args) {
     
-        String caminhoEntrada = "src\\ArquivosCSV\\passwords.csv";
-        String caminhoSaida = "src\\ArquivosCSV\\password_classifier.csv";
-        String caminhoTransformado = "src\\ArquivosCSV\\passwords_formated_data.csv";
-        String caminhoBoaeMuitoBoa = "src\\ArquivosCSV\\passwords_classifier.csv";
+        String caminhoEntrada = "Projeto-LEDA\\src\\ArquivosCSV\\passwords.csv";
+        String caminhoSaida = "Projeto-LEDA\\src\\ArquivosCSV\\password_classifier.csv";
+        String caminhoTransformado = "Projeto-LEDA\\src\\ArquivosCSV\\passwords_formated_data.csv";
+        String caminhoBoaeMuitoBoa = "Projeto-LEDA\\src\\ArquivosCSV\\passwords_classifier.csv";
         
         LerArquivosCsv leitorCsv = new LerArquivosCsv(caminhoEntrada);
         Classificador classificador = new ClassificacaoDeSenhas();

@@ -1,4 +1,4 @@
-public interface Pilha_IF {
+public interface Pilha_IF<T> {
     
     public boolean isEmpty();
     public int size();

@@ -35,10 +35,10 @@ public class OrdenacaoLengthDecrescente {
 
     public static void Ordenacao(String[] args) {
         
-        String EntradaCSV = "src\\ArquivosCSV\\passwords_formated_data.csv"; 
-        String SaidaMedioCasoCounting = "src\\ArquivosCSVOrdenados\\passwords_length_countingSort_medioCaso.csv"; 
-        String SaidaPiorCasoCounting = "src\\ArquivosCSVOrdenados\\passwords_length_countingSort_piorCaso.csv"; 
-        String SaidaMelhorCasoCounting = "src\\ArquivosCSVOrdenados\\passwords_length_countingSort_melhorCaso.csv"; 
+        String EntradaCSV = "Projeto-LEDA\\src\\ArquivosCSV\\passwords_formated_data.csv";
+        String SaidaMedioCasoCounting = "Projeto-LEDA\\src\\ArquivosCSVOrdenados\\passwords_length_countingSort_medioCaso.csv";
+        String SaidaPiorCasoCounting = "Projeto-LEDA\\src\\ArquivosCSVOrdenados\\passwords_length_countingSort_piorCaso.csv";
+        String SaidaMelhorCasoCounting = "Projeto-LEDA\\src\\ArquivosCSVOrdenados\\passwords_length_countingSort_melhorCaso.csv";
 
         try {
             // Chamada para o método de ordenação Counting Sort
@@ -71,9 +71,9 @@ public class OrdenacaoLengthDecrescente {
             System.err.println("Erro ao processar o arquivo: " + e.getMessage());
         }
 
-        String SaidaMedioCasoMerge = "src\\ArquivosCSVOrdenados\\passwords_length_mergeSort_medioCaso.csv";
-        String SaidaPiorCasoMerge = "src\\ArquivosCSVOrdenados\\passwords_length_mergeSort_piorCaso.csv";
-        String SaidaMelhorCasoMerge = "src\\ArquivosCSVOrdenados\\passwords_length_mergeSort_melhorCaso.csv";
+        String SaidaMedioCasoMerge = "Projeto-LEDA\\src\\ArquivosCSVOrdenados\\passwords_length_mergeSort_medioCaso.csv";
+        String SaidaPiorCasoMerge = "Projeto-LEDA\\src\\ArquivosCSVOrdenados\\passwords_length_mergeSort_piorCaso.csv";
+        String SaidaMelhorCasoMerge = "Projeto-LEDA\\src\\ArquivosCSVOrdenados\\passwords_length_mergeSort_melhorCaso.csv";
 
         try {
             // Chamada para o método de ordenação Merge Sort
@@ -107,9 +107,9 @@ public class OrdenacaoLengthDecrescente {
             System.err.println("Erro ao processar o arquivo: " + e.getMessage());
         }
 
-        String SaidaMedioCasoQuickMedianaDe3 = "src\\ArquivosCSVOrdenados\\passwords_length_quickSortMedianaDe3_medioCaso.csv";
-        String SaidaPiorCasoQuickMedianaDe3 = "src\\ArquivosCSVOrdenados\\passwords_length_quickSortMedianaDe3_piorCaso.csv";
-        String SaidaMelhorCasoQuickMedianaDe3 = "src\\ArquivosCSVOrdenados\\passwords_length_quickSortMedianaDe3_melhorCaso.csv";
+        String SaidaMedioCasoQuickMedianaDe3 = "Projeto-LEDA\\src\\ArquivosCSVOrdenados\\passwords_length_quickSortMedianaDe3_medioCaso.csv";
+        String SaidaPiorCasoQuickMedianaDe3 = "Projeto-LEDA\\src\\ArquivosCSVOrdenados\\passwords_length_quickSortMedianaDe3_piorCaso.csv";
+        String SaidaMelhorCasoQuickMedianaDe3 = "Projeto-LEDA\\src\\ArquivosCSVOrdenados\\passwords_length_quickSortMedianaDe3_melhorCaso.csv";
 
         try {
             // Chamada para o método de ordenação Quick Sort mediana de 3
@@ -143,7 +143,7 @@ public class OrdenacaoLengthDecrescente {
         }
         System.out.println("Iniciando ordenação por SelectionSort...");
          ///Selection Sort
-         String SaidaMedioCasoSelection = "src\\ArquivosCSVOrdenados\\passwords_length_selectionSort_medioCaso.csv";
+         String SaidaMedioCasoSelection = "Projeto-LEDA\\src\\ArquivosCSVOrdenados\\passwords_length_selectionSort_medioCaso.csv";
          try {
             // Chamada para o método de ordenação Selection Sort
             long Inicio = System.nanoTime();
@@ -154,7 +154,7 @@ public class OrdenacaoLengthDecrescente {
         } catch (IOException e) {
             System.err.println("Erro ao processar o arquivo: " + e.getMessage());
         }
-        String SaidaPiorCasoSelection = "src\\ArquivosCSVOrdenados\\passwords_length_selectionSort_piorCaso.csv";
+        String SaidaPiorCasoSelection = "Projeto-LEDA\\src\\ArquivosCSVOrdenados\\passwords_length_selectionSort_piorCaso.csv";
         try {
             // Chamada para o método de ordenação Selection Sort
             long Inicio = System.nanoTime();
@@ -165,7 +165,7 @@ public class OrdenacaoLengthDecrescente {
         } catch (IOException e) {
             System.err.println("Erro ao processar o arquivo: " + e.getMessage());
         }
-        String SaidaMelhorCasoSelection = "src\\ArquivosCSVOrdenados\\passwords_length_selectionSort_melhorCaso.csv";
+        String SaidaMelhorCasoSelection = "Projeto-LEDA\\src\\ArquivosCSVOrdenados\\passwords_length_selectionSort_melhorCaso.csv";
         try {
             // Chamada para o método de ordenação Selection Sort
             long Inicio = System.nanoTime();
@@ -177,7 +177,7 @@ public class OrdenacaoLengthDecrescente {
             System.err.println("Erro ao processar o arquivo: " + e.getMessage());
         }
         //quick sort
-        String SaidaMedioCasoQuick = "src\\ArquivosCSVOrdenados\\passwords_length_quickSort_medioCaso.csv";
+        String SaidaMedioCasoQuick = "Projeto-LEDA\\src\\ArquivosCSVOrdenados\\passwords_length_quickSort_medioCaso.csv";
         try {
             // Chamada para o método de ordenação Quick Sort
             long Inicio = System.nanoTime();
@@ -188,7 +188,7 @@ public class OrdenacaoLengthDecrescente {
         } catch (IOException e) {
             System.err.println("Erro ao processar o arquivo: " + e.getMessage());
         }
-        String SaidaPiorCasoQuick = "src\\ArquivosCSVOrdenados\\passwords_length_quickSort_piorCaso.csv";
+        String SaidaPiorCasoQuick = "Projeto-LEDA\\src\\ArquivosCSVOrdenados\\passwords_length_quickSort_piorCaso.csv";
         try {
             // Chamada para o método de ordenação Quick Sort
             long Inicio = System.nanoTime();
@@ -199,7 +199,7 @@ public class OrdenacaoLengthDecrescente {
         } catch (IOException e) {
             System.err.println("Erro ao processar o arquivo: " + e.getMessage());
         }
-        String SaidaMelhorCasoQuick = "src\\ArquivosCSVOrdenados\\passwords_length_quickSort_melhorCaso.csv";
+        String SaidaMelhorCasoQuick = "Projeto-LEDA\\src\\ArquivosCSVOrdenados\\passwords_length_quickSort_melhorCaso.csv";
         try {
             // Chamada para o método de ordenação Quick Sort
             long Inicio = System.nanoTime();
@@ -211,7 +211,7 @@ public class OrdenacaoLengthDecrescente {
             System.err.println("Erro ao processar o arquivo: " + e.getMessage());
         }
         //Heap Sort
-        String SaidaMedioCasoHeapSort = "src\\ArquivosCSVOrdenados\\passwords_length_heapSort_medioCaso.csv";
+        String SaidaMedioCasoHeapSort = "Projeto-LEDA\\src\\ArquivosCSVOrdenados\\passwords_length_heapSort_medioCaso.csv";
         try {
             // Chamada para o método de ordenação Heap Sort
             long Inicio = System.nanoTime();
@@ -222,7 +222,7 @@ public class OrdenacaoLengthDecrescente {
         } catch (IOException e) {
             System.err.println("Erro ao processar o arquivo: " + e.getMessage());
         }
-        String SaidaPiorCasoHeapSort = "src\\ArquivosCSVOrdenados\\passwords_length_heapSort_piorCaso.csv";
+        String SaidaPiorCasoHeapSort = "Projeto-LEDA\\src\\ArquivosCSVOrdenados\\passwords_length_heapSort_piorCaso.csv";
         try {
             // Chamada para o método de ordenação Heap Sort
             long Inicio = System.nanoTime();
@@ -233,7 +233,7 @@ public class OrdenacaoLengthDecrescente {
         } catch (IOException e) {
             System.err.println("Erro ao processar o arquivo: " + e.getMessage());
         }
-        String SaidaMelhorCasoHeapSort = "src\\ArquivosCSVOrdenados\\passwords_length_heapSort_melhorCaso.csv";
+        String SaidaMelhorCasoHeapSort = "Projeto-LEDA\\src\\ArquivosCSVOrdenados\\passwords_length_heapSort_melhorCaso.csv";
         try {
             // Chamada para o método de ordenação Heap Sort
             long Inicio = System.nanoTime();
@@ -245,7 +245,7 @@ public class OrdenacaoLengthDecrescente {
             System.err.println("Erro ao processar o arquivo: " + e.getMessage());
         }
         //Insection Sort
-        String SaidaMedioCasoInsectionSort = "src\\ArquivosCSVOrdenados\\passwords_length_insectionSort_medioCaso.csv";
+        String SaidaMedioCasoInsectionSort = "Projeto-LEDA\\src\\ArquivosCSVOrdenados\\passwords_length_insectionSort_medioCaso.csv";
         try {
             // Chamada para o método de ordenação Insection Sort
             long Inicio = System.nanoTime();
@@ -256,7 +256,7 @@ public class OrdenacaoLengthDecrescente {
         } catch (IOException e) {
             System.err.println("Erro ao processar o arquivo: " + e.getMessage());
         }
-        String SaidaPiorCasoInsectionSort = "src\\ArquivosCSVOrdenados\\passwords_length_insectionSort_piorCaso.csv";
+        String SaidaPiorCasoInsectionSort = "Projeto-LEDA\\src\\ArquivosCSVOrdenados\\passwords_length_insectionSort_piorCaso.csv";
         try {
             // Chamada para o método de ordenação Insection Sort
             long Inicio = System.nanoTime();
@@ -267,7 +267,7 @@ public class OrdenacaoLengthDecrescente {
         } catch (IOException e) {
             System.err.println("Erro ao processar o arquivo: " + e.getMessage());
         }
-        String SaidaMelhorCasoInsectionSort = "src\\ArquivosCSVOrdenados\\passwords_length_insectionSort_melhorCaso.csv";
+        String SaidaMelhorCasoInsectionSort = "Projeto-LEDA\\src\\ArquivosCSVOrdenados\\passwords_length_insectionSort_melhorCaso.csv";
         try {
             // Chamada para o método de ordenação Insection Sort
             long Inicio = System.nanoTime();
