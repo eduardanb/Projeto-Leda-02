@@ -1,4 +1,5 @@
 public interface TabelaHash_IF {
+    
     public boolean isEmpty();
     public int size();
     public boolean isfull();
