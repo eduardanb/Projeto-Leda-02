@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.*;
+import EstruturasDeDados.Pilha;
 
 public class CountingPiorCaso {
 
@@ -86,40 +87,43 @@ public class CountingPiorCaso {
 
         int[] sortedIndices = countingSort(values, max);
 
-        // INVERTE para ordem decrescente (apenas para length)
-        for (int i = 0; i < n / 2; i++) {
-            int temp = sortedIndices[i];
-            sortedIndices[i] = sortedIndices[n - 1 - i];
-            sortedIndices[n - 1 - i] = temp;
+        // Usando pilha para inverter a ordem
+        Pilha<Integer> pilha = new Pilha<>(n);
+        for (int index : sortedIndices) {
+            pilha.push(index);
+        }
+
+        // Recuperando os índices em ordem inversa (LIFO)
+        for (int i = 0; i < n; i++) {
+            sortedIndices[i] = pilha.pop();
         }
 
         writeCSV(outputFilePath, header, dataLines, sortedIndices);
     }
 
     private static String[] readCSV(String inputFilePath) throws IOException {
-    BufferedReader br = new BufferedReader(new FileReader(inputFilePath));
-    int totalLinhas = 0;
+        BufferedReader br = new BufferedReader(new FileReader(inputFilePath));
+        int totalLinhas = 0;
 
-    // Primeira passada: contar as linhas
-    while (br.readLine() != null) {
-        totalLinhas++;
+        // Primeira passada: contar as linhas
+        while (br.readLine() != null) {
+            totalLinhas++;
+        }
+        br.close();
+
+        String[] lines = new String[totalLinhas];
+
+        // Segunda passada: preencher o array
+        br = new BufferedReader(new FileReader(inputFilePath));
+        String line;
+        int rowCount = 0;
+        while ((line = br.readLine()) != null) {
+            lines[rowCount++] = line;
+        }
+        br.close();
+
+        return lines;
     }
-    br.close();
-
-    String[] lines = new String[totalLinhas];
-
-    // Segunda passada: preencher o array
-    br = new BufferedReader(new FileReader(inputFilePath));
-    String line;
-    int rowCount = 0;
-    while ((line = br.readLine()) != null) {
-        lines[rowCount++] = line;
-    }
-    br.close();
-
-    return lines;
-    }
-
 
     private static void writeCSV(String outputFilePath, String header, String[] lines, int[] indices) throws IOException {
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(outputFilePath))) {

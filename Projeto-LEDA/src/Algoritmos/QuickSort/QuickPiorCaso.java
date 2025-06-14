@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.Arrays;
+import EstruturasDeDados.Pilha;
 
 public class QuickPiorCaso {
 
@@ -13,22 +14,18 @@ public class QuickPiorCaso {
         long extract(String data, int rowIndex) throws Exception;
     }
 
-    // Ordena por tamanho (coluna 2)
     public static void quickSortCSVLength(String inputFilePath, String outputFilePath) throws IOException {
         processCSVByLong(inputFilePath, outputFilePath, 2, QuickPiorCaso::parseLongFromColumn, true); // decrescente
     }
 
-    // Ordena por data (coluna 3)
     public static void quickSortCSVData(String inputFilePath, String outputFilePath) throws IOException {
         processCSVByLong(inputFilePath, outputFilePath, 3, QuickPiorCaso::parseEpochDayFromDate, false); // crescente
     }
 
-    // Ordena por mês (coluna 3)
     public static void quickSortCSVMes(String inputFilePath, String outputFilePath) throws IOException {
         processCSVByLong(inputFilePath, outputFilePath, 3, QuickPiorCaso::parseMonthFromDate, false); // crescente
     }
 
-    // Processa o CSV, extrai valores e executa o QuickSort no pior caso
     private static void processCSVByLong(String inputFilePath, String outputFilePath, int columnIndex,
                                          ValueExtractor extractor, boolean decrescente) throws IOException {
 
@@ -44,7 +41,7 @@ public class QuickPiorCaso {
 
         for (int i = 0; i < n; i++) {
             String[] campos = dataLines[i].split(",", -1);
-            cleanedLines[i] = dataLines[i]; // Mantém original
+            cleanedLines[i] = dataLines[i];
 
             try {
                 if (columnIndex < campos.length) {
@@ -58,34 +55,46 @@ public class QuickPiorCaso {
             }
         }
 
-        // Gera o pior caso para o QuickSort (array já ordenado crescente ou decrescente)
-        prepareWorstCase(values, cleanedLines, decrescente);
+        // Gera o pior caso para o QuickSort usando pilha
+        prepareWorstCaseWithStack(values, cleanedLines, decrescente);
 
         // Executa o QuickSort
         quickSort(values, cleanedLines, 0, n - 1, decrescente);
 
-        // Escreve o resultado no arquivo de saída
+        // Escreve o resultado
         writeCSV(outputFilePath, header, cleanedLines);
     }
 
-    // Gera o pior caso para o QuickSort: array já ordenado crescente ou decrescente
-    private static void prepareWorstCase(long[] values, String[] lines, boolean decrescente) {
-        Integer[] indices = new Integer[values.length];
-        for (int i = 0; i < values.length; i++) indices[i] = i;
+    private static void prepareWorstCaseWithStack(long[] values, String[] lines, boolean decrescente) {
+        int n = values.length;
+        Integer[] indices = new Integer[n];
+        for (int i = 0; i < n; i++) indices[i] = i;
 
-        // Ordena os índices para criar o pior caso
+        // Ordena os índices
         Arrays.sort(indices, (a, b) -> decrescente ? Long.compare(values[b], values[a]) : Long.compare(values[a], values[b]));
 
-        long[] sortedValues = new long[values.length];
-        String[] sortedLines = new String[lines.length];
+        // Usando pilha para criar o array ordenado
+        Pilha<Long> valueStack = new Pilha<>(n);
+        Pilha<String> lineStack = new Pilha<>(n);
 
-        for (int i = 0; i < values.length; i++) {
-            sortedValues[i] = values[indices[i]];
-            sortedLines[i] = lines[indices[i]];
+        // Empilha em ordem crescente ou decrescente
+        if (decrescente) {
+            for (int i = 0; i < n; i++) {
+                valueStack.push(values[indices[i]]);
+                lineStack.push(lines[indices[i]]);
+            }
+        } else {
+            for (int i = n - 1; i >= 0; i--) {
+                valueStack.push(values[indices[i]]);
+                lineStack.push(lines[indices[i]]);
+            }
         }
 
-        System.arraycopy(sortedValues, 0, values, 0, values.length);
-        System.arraycopy(sortedLines, 0, lines, 0, lines.length);
+        // Desempilha para obter o array ordenado (pior caso para QuickSort)
+        for (int i = 0; i < n; i++) {
+            values[i] = valueStack.pop();
+            lines[i] = lineStack.pop();
+        }
     }
 
     private static String[] readCSV(String inputFilePath) throws IOException {
@@ -94,7 +103,6 @@ public class QuickPiorCaso {
         }
     }
 
-    // Extrai um valor long de uma coluna
     private static long parseLongFromColumn(String value, int rowIndex) {
         try {
             return Long.parseLong(value.trim());
@@ -103,7 +111,6 @@ public class QuickPiorCaso {
         }
     }
 
-    // Extrai o epochDay de uma data no formato dd/MM/yyyy
     private static long parseEpochDayFromDate(String dateStr, int rowIndex) {
         try {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
@@ -113,7 +120,6 @@ public class QuickPiorCaso {
         }
     }
 
-    // Extrai o mês de uma data no formato dd/MM/yyyy
     private static long parseMonthFromDate(String dateStr, int rowIndex) {
         try {
             String[] partes = dateStr.trim().split("/");
@@ -126,7 +132,6 @@ public class QuickPiorCaso {
         }
     }
 
-    // QuickSort padrão (pior caso: array já ordenado)
     private static void quickSort(long[] values, String[] lines, int low, int high, boolean decrescente) {
         while (low < high) {
             int pivotIndex = partition(values, lines, low, high, decrescente);
@@ -140,7 +145,6 @@ public class QuickPiorCaso {
         }
     }
 
-    // Particionamento do QuickSort
     private static int partition(long[] values, String[] lines, int low, int high, boolean decrescente) {
         long pivot = values[high];
         int i = low - 1;
@@ -155,7 +159,6 @@ public class QuickPiorCaso {
         return i + 1;
     }
 
-    // Troca valores e linhas
     private static void swap(long[] values, String[] lines, int i, int j) {
         long tempVal = values[i];
         values[i] = values[j];
@@ -166,7 +169,6 @@ public class QuickPiorCaso {
         lines[j] = tempLine;
     }
 
-    // Escreve o resultado no arquivo de saída
     private static void writeCSV(String outputFilePath, String header, String[] lines) throws IOException {
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(outputFilePath))) {
             bw.write(header);

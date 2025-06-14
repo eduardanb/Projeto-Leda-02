@@ -4,6 +4,7 @@ import java.io.*;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+import EstruturasDeDados.Pilha;
 
 public class SelectionPiorCaso {
 
@@ -74,18 +75,19 @@ public class SelectionPiorCaso {
 
         selectionSortPiorCaso(valores, indices);
 
-        // INVERTE para ordem decrescente (apenas para length)
-        int n = indices.length;
-        for (int i = 0; i < n / 2; i++) {
-            int temp = indices[i];
-            indices[i] = indices[n - 1 - i];
-            indices[n - 1 - i] = temp;
+        // Usando pilha para inverter a ordem (decrescente)
+        Pilha<Integer> pilhaIndices = new Pilha<>(indices.length);
+        for (int index : indices) {
+            pilhaIndices.push(index);
+        }
+
+        for (int i = 0; i < indices.length; i++) {
+            indices[i] = pilhaIndices.pop();
         }
 
         escreverCSV(outputFilePath, csv.linear, csv.rowStart, indices, csv.totalRows);
     }
 
-    // Estrutura auxiliar para armazenar os dados do CSV de forma dinâmica
     private static class CSVData {
         String[] linear;
         int[] rowStart;
@@ -98,7 +100,6 @@ public class SelectionPiorCaso {
         }
     }
 
-    // Método dinâmico para ler o CSV em arrays unidimensionais
     private static CSVData lerCSV(String caminho) throws IOException {
         int linearCap = 10000;
         int rowCap = 1000;
@@ -129,7 +130,6 @@ public class SelectionPiorCaso {
         }
         br.close();
 
-        // Reduz os arrays ao tamanho real
         String[] linearFinal = new String[pos];
         System.arraycopy(linear, 0, linearFinal, 0, pos);
         int[] rowStartFinal = new int[linhaIndex];

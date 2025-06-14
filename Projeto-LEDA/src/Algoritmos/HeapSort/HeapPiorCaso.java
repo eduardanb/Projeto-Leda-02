@@ -4,6 +4,7 @@ import java.io.*;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+import EstruturasDeDados.Pilha;
 
 public class HeapPiorCaso {
 
@@ -48,10 +49,23 @@ public class HeapPiorCaso {
         }
         br.close();
 
-        // pior caso: ordenar crescente primeiro
+        // Usando pilha para o pior caso
+        Pilha<Integer> pilha = new Pilha<>(n);
+
+        // Primeira ordenação (crescente)
         heapSort(values, indices, true);
-        // depois ordenar como desejado
-        heapSort(values, indices, ascending);
+
+        // Empilha os índices ordenados
+        for (int index : indices) {
+            pilha.push(index);
+        }
+
+        // Desempilha para obter ordem inversa (decrescente)
+        if (!ascending) {
+            for (int i = 0; i < n; i++) {
+                indices[i] = pilha.pop();
+            }
+        }
 
         writeCSV(outputFilePath, header, lines, indices);
     }
@@ -88,10 +102,21 @@ public class HeapPiorCaso {
         }
         br.close();
 
-        // pior caso: ordenar crescente primeiro
+        // Usando pilha para o pior caso
+        Pilha<Integer> pilha = new Pilha<>(n);
+
+        // Primeira ordenação (crescente)
         heapSort(values, indices, true);
-        // saída: decrescente
-        heapSort(values, indices, false);
+
+        // Empilha os índices ordenados
+        for (int index : indices) {
+            pilha.push(index);
+        }
+
+        // Desempilha para obter ordem decrescente
+        for (int i = 0; i < n; i++) {
+            indices[i] = pilha.pop();
+        }
 
         writeCSV(outputFilePath, header, lines, indices);
     }
@@ -128,10 +153,21 @@ public class HeapPiorCaso {
         }
         br.close();
 
-        // pior caso: ordenar crescente primeiro
+        // Usando pilha para o pior caso
+        Pilha<Integer> pilha = new Pilha<>(n);
+
+        // Primeira ordenação (crescente)
         heapSort(values, indices, true);
-        // saída: decrescente
-        heapSort(values, indices, false);
+
+        // Empilha os índices ordenados
+        for (int index : indices) {
+            pilha.push(index);
+        }
+
+        // Desempilha para obter ordem decrescente
+        for (int i = 0; i < n; i++) {
+            indices[i] = pilha.pop();
+        }
 
         writeCSV(outputFilePath, header, lines, indices);
     }

@@ -2,6 +2,7 @@ package Algoritmos.InsectionSort;
 
 import java.io.*;
 import java.util.Arrays;
+import EstruturasDeDados.Pilha;
 
 public class InsectionPiorCaso {
 
@@ -120,23 +121,19 @@ public class InsectionPiorCaso {
     private static void prepareWorstCase(long[] values, int[] indices, boolean ascending) {
         // Ordena os valores na ordem oposta ao desejado para criar o pior caso
         insertionSort(values, indices, ascending);
-        reverse(values);
-        reverse(indices);
-    }
 
-    private static void reverse(long[] array) {
-        for (int i = 0, j = array.length - 1; i < j; i++, j--) {
-            long temp = array[i];
-            array[i] = array[j];
-            array[j] = temp;
+        // Usando pilha para inverter a ordem
+        Pilha<Long> valueStack = new Pilha<>(values.length);
+        Pilha<Integer> indexStack = new Pilha<>(indices.length);
+
+        for (int i = 0; i < values.length; i++) {
+            valueStack.push(values[i]);
+            indexStack.push(indices[i]);
         }
-    }
 
-    private static void reverse(int[] array) {
-        for (int i = 0, j = array.length - 1; i < j; i++, j--) {
-            int temp = array[i];
-            array[i] = array[j];
-            array[j] = temp;
+        for (int i = 0; i < values.length; i++) {
+            values[i] = valueStack.pop();
+            indices[i] = indexStack.pop();
         }
     }
 
@@ -145,7 +142,7 @@ public class InsectionPiorCaso {
             long key = values[i];
             int keyIdx = indices[i];
             int j = i - 1;
-            
+
             while (j >= 0 && (ascending ? values[j] > key : values[j] < key)) {
                 values[j + 1] = values[j];
                 indices[j + 1] = indices[j];
