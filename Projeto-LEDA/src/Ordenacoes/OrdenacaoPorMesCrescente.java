@@ -1,22 +1,22 @@
 package Ordenacoes;
 
-import Ordenacoes.CountingSort.*;
-import Ordenacoes.HeapSort.HeapMedioCaso;
-import Ordenacoes.HeapSort.HeapMelhorCaso;
-import Ordenacoes.HeapSort.HeapPiorCaso;
-import Ordenacoes.InsectionSort.InsectionMedioCaso;
-import Ordenacoes.InsectionSort.InsectionMelhorCaso;
-import Ordenacoes.InsectionSort.InsectionPiorCaso;
-import Ordenacoes.MergeSort.*;
-import Ordenacoes.QuickSort.QuickMedioCaso;
-import Ordenacoes.QuickSort.QuickMelhorCaso;
-import Ordenacoes.QuickSort.QuickPiorCaso;
-import Ordenacoes.QuickSortMediana3.Quick3MedioCaso;
-import Ordenacoes.QuickSortMediana3.Quick3MelhorCaso;
-import Ordenacoes.QuickSortMediana3.Quick3PiorCaso;
-import Ordenacoes.SelectionSort.SelectionMedioCaso;
-import Ordenacoes.SelectionSort.SelectionMelhorCaso;
-import Ordenacoes.SelectionSort.SelectionPiorCaso;
+import Algoritmos.CountingSort.*;
+import Algoritmos.HeapSort.HeapMedioCaso;
+import Algoritmos.HeapSort.HeapMelhorCaso;
+import Algoritmos.HeapSort.HeapPiorCaso;
+import Algoritmos.InsectionSort.InsectionMedioCaso;
+import Algoritmos.InsectionSort.InsectionMelhorCaso;
+import Algoritmos.InsectionSort.InsectionPiorCaso;
+import Algoritmos.MergeSort.*;
+import Algoritmos.QuickSort.QuickMedioCaso;
+import Algoritmos.QuickSort.QuickMelhorCaso;
+import Algoritmos.QuickSort.QuickPiorCaso;
+import Algoritmos.QuickSortMediana3.Quick3MedioCaso;
+import Algoritmos.QuickSortMediana3.Quick3MelhorCaso;
+import Algoritmos.QuickSortMediana3.Quick3PiorCaso;
+import Algoritmos.SelectionSort.SelectionMedioCaso;
+import Algoritmos.SelectionSort.SelectionMelhorCaso;
+import Algoritmos.SelectionSort.SelectionPiorCaso;
 
 import java.io.*;
 

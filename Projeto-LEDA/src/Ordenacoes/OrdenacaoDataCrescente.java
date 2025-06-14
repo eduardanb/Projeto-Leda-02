@@ -1,12 +1,12 @@
 package Ordenacoes;
 
-import Ordenacoes.CountingSort.*;
-import Ordenacoes.HeapSort.*;
-import Ordenacoes.InsectionSort.*;
-import Ordenacoes.MergeSort.*;
-import Ordenacoes.QuickSort.*;
-import Ordenacoes.QuickSortMediana3.*;
-import Ordenacoes.SelectionSort.*;
+import Algoritmos.CountingSort.*;
+import Algoritmos.HeapSort.*;
+import Algoritmos.InsectionSort.*;
+import Algoritmos.MergeSort.*;
+import Algoritmos.QuickSort.*;
+import Algoritmos.QuickSortMediana3.*;
+import Algoritmos.SelectionSort.*;
 import java.io.*;
 
 public class OrdenacaoDataCrescente {
