@@ -84,7 +84,7 @@ Durante a execução da Parte 1, os seguintes arquivos são gerados:
    ```
 3. Executar:
    ```cmd
-   java -cp out Aplicacao.Main
+   java -cp out Main
    ```
 
 #### **Linux**
@@ -110,7 +110,7 @@ Durante a execução da Parte 1, os seguintes arquivos são gerados:
    ```
 3. Executar:
    ```cmd
-   java -cp out Aplicacao.Main
+   java -cp out Main
    ```
 ---
 
@@ -197,7 +197,7 @@ Para cada combinação de algoritmo e critério, foram executados três cenário
 - Mostra o desempenho médio do algoritmo
 - Utiliza uma permutação aleatória dos dados originais
 
-### *Algoritmos Implementados*
+### *Model.EstruturasDeDados.Algoritmos Implementados*
 Foram implementados e testados os seguintes algoritmos de ordenação:
 
 - Insertion Sort
@@ -213,7 +213,7 @@ Foram implementados e testados os seguintes algoritmos de ordenação:
 ```plaintext
 src/
 ├── Ordenacoes/
-│   ├── Algoritmos/                      # Implementações dos algoritmos puros
+│   ├── Model.EstruturasDeDados.Algoritmos/                      # Implementações dos algoritmos puros
 │   │   ├── MergeSort/
 │   │   │   ├── MergeMelhorCaso.java
 │   │   │   ├── MergeMedioCaso.java
