@@ -167,7 +167,7 @@ As estruturas são utilizadas nos seguintes módulos:
     │   └── Model.EstruturasDeDados/ # Estruturas personalizadas  
     │       ├── ArvoreBinaria.java  
     │       ├── Pilha.java  
-    │       └── Lista_IF.java  
+    │       └── MinhaLista.java  
     ├── .classpath                 # Configuração do Eclipse  
     ├── .gitignore                 # Arquivos ignorados pelo Git  
     └── Main.java                  # Ponto de entrada  
