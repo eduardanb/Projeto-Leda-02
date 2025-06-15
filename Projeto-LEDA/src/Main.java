@@ -4,14 +4,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
-import Controllers.ClassificacaoBoaeMuitoboa;
-import Controllers.ClassificacaoDeSenhas;
-import Controllers.Classificador;
-import Controllers.LerArquivosCsv;
-import Controllers.TransformadorDeDados;
-import Controllers.OrdenacaoDataCrescente;
-import Controllers.OrdenacaoLengthDecrescente;
-import Controllers.OrdenacaoPorMesCrescente;
+import Controllers.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -61,6 +54,10 @@ public class Main {
             OrdenacaoLengthDecrescente.Ordenacao(args);
             OrdenacaoDataCrescente.Ordenacao(args);
             OrdenacaoPorMesCrescente.Ordenacao(args);
+
+            OrdenacaoArvore.Ordenacao(args);
+            OrdenacaoLista.Ordenacao(args);
+            OrdenacaoPilha.Ordenacao(args);
 
         } catch (IOException e) {
             System.out.println("Erro ao processar o arquivo: " + e.getMessage());

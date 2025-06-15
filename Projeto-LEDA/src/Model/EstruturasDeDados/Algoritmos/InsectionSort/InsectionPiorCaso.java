@@ -4,6 +4,9 @@ import java.io.*;
 import java.util.Arrays;
 import Model.EstruturasDeDados.Pilha;
 
+import java.io.*;
+import java.util.Arrays;
+
 public class InsectionPiorCaso {
 
     public static void insertionSortCSVLength(String inputFilePath, String outputFilePath) throws IOException {
@@ -121,19 +124,23 @@ public class InsectionPiorCaso {
     private static void prepareWorstCase(long[] values, int[] indices, boolean ascending) {
         // Ordena os valores na ordem oposta ao desejado para criar o pior caso
         insertionSort(values, indices, ascending);
+        reverse(values);
+        reverse(indices);
+    }
 
-        // Usando pilha para inverter a ordem
-        Pilha<Long> valueStack = new Pilha<>(values.length);
-        Pilha<Integer> indexStack = new Pilha<>(indices.length);
-
-        for (int i = 0; i < values.length; i++) {
-            valueStack.push(values[i]);
-            indexStack.push(indices[i]);
+    private static void reverse(long[] array) {
+        for (int i = 0, j = array.length - 1; i < j; i++, j--) {
+            long temp = array[i];
+            array[i] = array[j];
+            array[j] = temp;
         }
+    }
 
-        for (int i = 0; i < values.length; i++) {
-            values[i] = valueStack.pop();
-            indices[i] = indexStack.pop();
+    private static void reverse(int[] array) {
+        for (int i = 0, j = array.length - 1; i < j; i++, j--) {
+            int temp = array[i];
+            array[i] = array[j];
+            array[j] = temp;
         }
     }
 

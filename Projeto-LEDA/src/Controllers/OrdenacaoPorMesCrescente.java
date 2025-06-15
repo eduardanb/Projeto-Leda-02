@@ -45,7 +45,7 @@ public class OrdenacaoPorMesCrescente {
 
     public static void Ordenacao(String[] args) {
         // Caminhos dos arquivos CSV
-        String EntradaCSV = "Projeto-LEDA\\src\\ArquivosCSV\\passwords_formated_data.csv";
+        String EntradaCSV = "Projeto-LEDA\\DadosDeEntrada\\passwords_formated_data.csv";
         String SaidaCountingMelhorCaso = "Projeto-LEDA\\DadosFinais\\passwords_data_month_countingSort_melhorCaso.csv";
         String SaidaCountingMedioCaso = "Projeto-LEDA\\DadosFinais\\passwords_data_month_countingSort_medioCaso.csv";
         String SaidaCountingPiorCaso = "Projeto-LEDA\\DadosFinais\\passwords_data_month_countingSort_piorCaso.csv";

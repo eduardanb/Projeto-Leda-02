@@ -7,6 +7,12 @@ import java.time.format.DateTimeParseException;
 import java.util.Arrays;
 import Model.EstruturasDeDados.Pilha;
 
+import java.io.*;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.util.Arrays;
+
 public class Quick3PiorCaso {
 
     public static void QuickSort3CSVLength(String inputFilePath, String outputFilePath) throws IOException {
@@ -122,6 +128,7 @@ public class Quick3PiorCaso {
         bw.close();
     }
 
+    // para LENGTH (coluna 2)
     private static void processCSV(String inputFilePath, String outputFilePath, int columnIndex) throws IOException {
         String[] linhas = readCSV(inputFilePath);
         if (linhas.length <= 1) return;
@@ -142,16 +149,11 @@ public class Quick3PiorCaso {
         }
 
         quickSortPiorCaso(valores, indices, 0, n - 1);
-
-        // Usando pilha para inverter a ordem
-        Pilha<Integer> indexStack = new Pilha<>(n);
-        for (int index : indices) {
-            indexStack.push(index);
-        }
-
-        // Desempilha para obter ordem decrescente
-        for (int i = 0; i < n; i++) {
-            indices[i] = indexStack.pop();
+        // inverte para ordem decrescente
+        for (int i = 0; i < n / 2; i++) {
+            int tmp = indices[i];
+            indices[i] = indices[n - 1 - i];
+            indices[n - 1 - i] = tmp;
         }
 
         writeCSV(outputFilePath, header, Arrays.copyOfRange(linhas, 1, linhas.length), indices);

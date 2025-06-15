@@ -7,6 +7,12 @@ import java.time.format.DateTimeParseException;
 import java.util.Arrays;
 import Model.EstruturasDeDados.Pilha;
 
+import java.io.*;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.util.Arrays;
+
 public class MergePiorCaso {
 
     public static void mergeSortCSVLength(String inputFilePath, String outputFilePath) throws IOException {
@@ -127,47 +133,42 @@ public class MergePiorCaso {
 
     private static void prepareWorstCase(long[] array, int[] indices) {
         int n = array.length;
+        long[] sortedArray = Arrays.copyOf(array, n);
+        int[] originalIndices = Arrays.copyOf(indices, n);
 
-        // Ordena os arrays (crescente)
+        // Ordena os dois arrays com base em valores
         for (int i = 0; i < n - 1; i++) {
             for (int j = i + 1; j < n; j++) {
-                if (array[i] > array[j]) {
-                    long tempVal = array[i];
-                    array[i] = array[j];
-                    array[j] = tempVal;
+                if (sortedArray[i] > sortedArray[j]) {
+                    long tempVal = sortedArray[i];
+                    sortedArray[i] = sortedArray[j];
+                    sortedArray[j] = tempVal;
 
-                    int tempIdx = indices[i];
-                    indices[i] = indices[j];
-                    indices[j] = tempIdx;
+                    int tempIdx = originalIndices[i];
+                    originalIndices[i] = originalIndices[j];
+                    originalIndices[j] = tempIdx;
                 }
             }
         }
 
-        // Usando pilha para criar o padrão do pior caso do merge sort
-        Pilha<Long> valueStack = new Pilha<>(n);
-        Pilha<Integer> indexStack = new Pilha<>(n);
-
+        long[] tempArray = new long[n];
+        int[] tempIndices = new int[n];
         int left = 0, right = n - 1;
-        boolean toggle = true;
 
-        while (left <= right) {
-            if (toggle) {
-                valueStack.push(array[right]);
-                indexStack.push(indices[right]);
+        for (int i = 0; i < n; i++) {
+            if (i % 2 == 0) {
+                tempArray[i] = sortedArray[right];
+                tempIndices[i] = originalIndices[right];
                 right--;
             } else {
-                valueStack.push(array[left]);
-                indexStack.push(indices[left]);
+                tempArray[i] = sortedArray[left];
+                tempIndices[i] = originalIndices[left];
                 left++;
             }
-            toggle = !toggle;
         }
 
-        // Desempilha para obter o padrão do pior caso
-        for (int i = 0; i < n; i++) {
-            array[i] = valueStack.pop();
-            indices[i] = indexStack.pop();
-        }
+        System.arraycopy(tempArray, 0, array, 0, n);
+        System.arraycopy(tempIndices, 0, indices, 0, n);
     }
 
     private static int[] mergeSortWithIndices(long[] array, int[] indices, boolean decrescente) {

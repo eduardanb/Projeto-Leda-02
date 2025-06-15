@@ -5,7 +5,6 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.*;
-import Model.EstruturasDeDados.Pilha;
 
 public class CountingPiorCaso {
 
@@ -87,15 +86,11 @@ public class CountingPiorCaso {
 
         int[] sortedIndices = countingSort(values, max);
 
-        // Usando pilha para inverter a ordem
-        Pilha<Integer> pilha = new Pilha<>(n);
-        for (int index : sortedIndices) {
-            pilha.push(index);
-        }
-
-        // Recuperando os índices em ordem inversa (LIFO)
-        for (int i = 0; i < n; i++) {
-            sortedIndices[i] = pilha.pop();
+        // INVERTE para ordem decrescente (apenas para length)
+        for (int i = 0; i < n / 2; i++) {
+            int temp = sortedIndices[i];
+            sortedIndices[i] = sortedIndices[n - 1 - i];
+            sortedIndices[n - 1 - i] = temp;
         }
 
         writeCSV(outputFilePath, header, dataLines, sortedIndices);
@@ -124,6 +119,7 @@ public class CountingPiorCaso {
 
         return lines;
     }
+
 
     private static void writeCSV(String outputFilePath, String header, String[] lines, int[] indices) throws IOException {
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(outputFilePath))) {

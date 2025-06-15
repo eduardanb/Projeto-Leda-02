@@ -35,7 +35,7 @@ public class OrdenacaoLengthDecrescente {
 
     public static void Ordenacao(String[] args) {
         
-        String EntradaCSV = "Projeto-LEDA\\DadosFinais\\passwords_formated_data.csv";
+        String EntradaCSV = "Projeto-LEDA\\DadosDeEntrada\\passwords_formated_data.csv";
         String SaidaMedioCasoCounting = "Projeto-LEDA\\DadosFinais\\passwords_length_countingSort_medioCaso.csv";
         String SaidaPiorCasoCounting = "Projeto-LEDA\\DadosFinais\\passwords_length_countingSort_piorCaso.csv";
         String SaidaMelhorCasoCounting = "Projeto-LEDA\\DadosFinais\\passwords_length_countingSort_melhorCaso.csv";
